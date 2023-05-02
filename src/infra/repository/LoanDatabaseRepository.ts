@@ -1,7 +1,8 @@
+import { LoanRepository } from "../../application/repository/LoanRepository";
 import Loan from "../../domain/entity/Loan";
 import Connection from "../database/Connection";
 
-export default class LoanDatabaseRepository {
+export default class LoanDatabaseRepository implements LoanRepository {
   constructor(private readonly connection: Connection) {}
   async save(loan: Loan): Promise<void> {
     await this.connection.query(

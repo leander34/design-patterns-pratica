@@ -1,7 +1,10 @@
+import { InstallmentRepository } from "../../application/repository/InstallmentRepository";
 import Installment from "../../domain/entity/Installment";
 import Connection from "../database/Connection";
 
-export default class InstallmentDatabaseRepository {
+export default class InstallmentDatabaseRepository
+  implements InstallmentRepository
+{
   constructor(private readonly connection: Connection) {}
   async save(installment: Installment): Promise<void> {
     await this.connection.query(
